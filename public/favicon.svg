@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <defs>
+    <linearGradient id="beam" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#fbbf24" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <!-- Beam -->
+  <path d="M32 16 L60 2 L52 30 Z" fill="url(#beam)" />
+  <!-- Lighthouse Base/Body -->
+  <path d="M26 56 L38 56 L41 22 L23 22 Z" fill="#f1f5f9"/>
+  <!-- Stripes -->
+  <path d="M24.5 30 L39.5 30 L38.5 38 L25.5 38 Z" fill="#ef4444"/>
+  <path d="M26.5 22 L37.5 22 L38 26 L26 26 Z" fill="#0f172a"/>
+  <path d="M25 42 L39 42 L40 50 L24 50 Z" fill="#ef4444"/>
+  <!-- Lantern room -->
+  <rect x="27" y="14" width="10" height="8" fill="#0f172a" rx="1"/>
+  <circle cx="32" cy="18" r="3.5" fill="#fbbf24"/>
+  <!-- Roof -->
+  <path d="M26 14 L32 7 L38 14 Z" fill="#ef4444"/>
+  <!-- Base ground -->
+  <rect x="20" y="56" width="24" height="5" rx="2.5" fill="#475569"/>
+</svg>

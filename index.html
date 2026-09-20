@@ -5,17 +5,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Alojamentos em Aveiro — Aveiro Sunset & Aveiro White 105</title>
     <meta name="description" content="Apresentação oficial dos alojamentos Aveiro Sunset e Aveiro White 105 em Aveiro, Portugal. Dois espaços confortáveis para ficar, canais e ria para descobrir, com reserva direta no Booking." />
+    <link rel="canonical" href="https://alojamentos-aveiro.vercel.app/" />
+
+    <!-- OpenGraph / Social Share Cards -->
+    <meta property="og:type" content="website" />
     <meta property="og:title" content="Alojamentos em Aveiro — Aveiro Sunset & Aveiro White 105" />
     <meta property="og:description" content="Apresentação oficial dos alojamentos Aveiro Sunset e Aveiro White 105 em Aveiro, Portugal. Dois espaços confortáveis para ficar, canais e ria para descobrir, com reserva direta no Booking." />
-    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://alojamentos-aveiro.vercel.app/" />
+    <meta property="og:site_name" content="Alojamentos em Aveiro" />
+    <meta property="og:locale" content="pt_PT" />
+    <meta property="og:image" content="https://thinkddg.com/aveiro/fotos-aveiro/aveiro-fim-do-dia.jpg" />
+
+    <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Alojamentos em Aveiro — Aveiro Sunset & Aveiro White 105" />
+    <meta name="twitter:description" content="Apresentação oficial dos alojamentos Aveiro Sunset e Aveiro White 105 em Aveiro, Portugal. Dois espaços confortáveis para ficar, canais e ria para descobrir." />
+    <meta name="twitter:image" content="https://thinkddg.com/aveiro/fotos-aveiro/aveiro-fim-do-dia.jpg" />
+
+    <!-- Favicon (Farol / Lighthouse) -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet" />
+
+    <!-- Schema.org JSON-LD Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "LodgingBusiness",
+      "name": "Alojamentos em Aveiro",
+      "description": "Aveiro Sunset e Aveiro White 105 - Alojamentos de excelência no centro e canais de Aveiro.",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Rua de Abel Ribeiro / Av. Dr. Lourenço Peixinho",
+        "addressLocality": "Aveiro",
+        "postalCode": "3800-350",
+        "addressCountry": "PT"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 40.6405,
+        "longitude": -8.6538
+      },
+      "url": "https://alojamentos-aveiro.vercel.app/",
+      "telephone": "+351924323980",
+      "priceRange": "€€"
+    }
+    </script>
   </head>
   <body class="bg-[#0e1014] text-[#ecebe8] antialiased selection:bg-[#c5a880] selection:text-[#0e1014]">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
-
