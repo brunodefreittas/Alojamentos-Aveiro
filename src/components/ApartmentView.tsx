@@ -92,11 +92,11 @@ export const ApartmentView: React.FC<ApartmentViewProps> = ({
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-16">
         <div className="relative rounded-3xl overflow-hidden border border-[#232b3d] shadow-2xl bg-[#11141c]">
           {/* Main Hero Photo Container */}
-          <div className="relative aspect-[16/9] sm:aspect-[21/9] w-full bg-[#08090d]">
+          <div className="relative min-h-[540px] sm:aspect-[21/9] w-full bg-[#08090d] flex flex-col justify-between p-5 sm:p-10">
             <img
               src={apartment.heroImage}
               alt={apartment.name}
-              className="w-full h-full object-cover object-center"
+              className="absolute inset-0 w-full h-full object-cover object-center"
               referrerPolicy="no-referrer"
               onError={(e) => {
                 const fallback = apartment.gallery[0]?.fallbackUrl;
@@ -105,17 +105,17 @@ export const ApartmentView: React.FC<ApartmentViewProps> = ({
                 }
               }}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0a0c10] via-[#0a0c10]/60 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0a0c10] via-[#0a0c10]/85 to-[#0a0c10]/60" />
 
             {/* Top badges */}
-            <div className="absolute top-4 left-4 sm:top-6 sm:left-6 flex flex-wrap items-center gap-2.5">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[#003580]/90 text-white backdrop-blur-md border border-[#1e4c9a] shadow-lg">
+            <div className="relative z-10 flex flex-wrap items-center gap-2.5">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[#003580]/95 text-white backdrop-blur-md border border-[#1e4c9a] shadow-lg">
                 <span className="text-xs font-semibold tracking-wider">Booking.com</span>
                 <span className="px-1.5 py-0.5 rounded bg-white text-[#003580] text-xs font-bold">
                   {apartment.bookingLocationScore.toString().replace('.', ',')}
                 </span>
               </div>
-              <span className="text-[11px] text-[#e0ded8] bg-[#0a0c10]/80 border border-[#2c354a] px-3 py-1.5 rounded-xl backdrop-blur-md">
+              <span className="text-[11px] text-[#e0ded8] bg-[#0a0c10]/90 border border-[#2c354a] px-3 py-1.5 rounded-xl backdrop-blur-md">
                 {lang === 'pt'
                   ? `Baseado em ${apartment.bookingReviewsCount} avaliações`
                   : `Based on ${apartment.bookingReviewsCount} reviews`}
@@ -123,12 +123,12 @@ export const ApartmentView: React.FC<ApartmentViewProps> = ({
             </div>
 
             {/* Bottom Hero Content */}
-            <div className="absolute bottom-6 left-6 right-6 sm:bottom-10 sm:left-10 sm:right-10 flex flex-col md:flex-row md:items-end justify-between gap-6">
+            <div className="relative z-10 flex flex-col md:flex-row md:items-end justify-between gap-6 mt-12 sm:mt-0">
               <div className="max-w-2xl">
                 <span className="text-xs uppercase tracking-[0.25em] text-[#c5a880] font-medium block mb-2">
                   {apartment.eyebrow[lang]}
                 </span>
-                <h1 className="font-serif text-3xl sm:text-5xl text-[#fbf8f3] font-normal tracking-tight mb-3">
+                <h1 className="font-serif text-2xl sm:text-5xl text-[#fbf8f3] font-normal tracking-tight mb-3">
                   {apartment.heroTitle[lang]}
                 </h1>
                 <p className="text-xs sm:text-sm text-[#c9c4b8] font-light leading-relaxed mb-4">
@@ -146,7 +146,7 @@ export const ApartmentView: React.FC<ApartmentViewProps> = ({
                   href={apartment.bookingUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-2xl bg-[#003580] hover:bg-[#002b66] text-white font-medium text-xs tracking-wider uppercase border border-[#1e4c9a] shadow-2xl hover:scale-105 transition-all duration-200"
+                  className="inline-flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-4 rounded-2xl bg-[#003580] hover:bg-[#002b66] text-white font-medium text-xs tracking-wider uppercase border border-[#1e4c9a] shadow-2xl hover:scale-105 transition-all duration-200"
                 >
                   <span>{t.bookButton}</span>
                   <ExternalLink className="w-4 h-4" />
