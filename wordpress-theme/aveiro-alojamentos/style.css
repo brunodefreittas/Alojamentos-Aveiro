@@ -1,0 +1,32 @@
+/*
+Theme Name: Aveiro Alojamentos - Sunset & White 105
+Theme URI: https://thinkddg.com/aveiro/
+Author: Aveiro Alojamentos
+Author URI: https://thinkddg.com/aveiro/
+Description: Tema premium oficial para gestão e reserva dos alojamentos locais Aveiro Sunset e Aveiro White 105 em Aveiro, Portugal. Inclui gestão dinâmica de galerias de fotos via biblioteca de mídia do WordPress, sistema completo de moderação e publicação de depoimentos de hóspedes, integração com Google Maps, pontos de interesse e reservas diretas Booking.com.
+Version: 1.0.0
+Tested up to: 6.7
+Requires at least: 5.8
+Requires PHP: 7.4
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: aveiro-alojamentos
+Tags: holiday, lodging, hotel, vacation-rental, custom-post-type, translation-ready, dark-theme
+*/
+
+/* WordPress Core Alignment Classes */
+.alignnone { margin: 5px 20px 20px 0; }
+.aligncenter, div.aligncenter { display: block; margin: 5px auto 5px auto; }
+.alignright { float:right; margin: 5px 0 20px 20px; }
+.alignleft { float: left; margin: 5px 20px 20px 0; }
+a img.alignright { float: right; margin: 5px 0 20px 20px; }
+a img.alignnone { margin: 5px 20px 20px 0; }
+a img.alignleft { float: left; margin: 5px 20px 20px 0; }
+a img.aligncenter { display: block; margin-left: auto; margin-right: auto; }
+.wp-caption { background: #131620; border: 1px solid #262e40; max-width: 96%; padding: 5px 3px 10px; text-align: center; }
+.wp-caption.alignnone { margin: 5px 20px 20px 0; }
+.wp-caption.alignleft { margin: 5px 20px 20px 0; }
+.wp-caption.alignright { margin: 5px 0 20px 20px; }
+.wp-caption img { border: 0 none; height: auto; margin: 0; max-width: 98.5%; padding: 0; width: auto; }
+.wp-caption p.wp-caption-text { font-size: 11px; line-height: 17px; margin: 0; padding: 0 4px 5px; color: #9b9588; }
+.screen-reader-text { border: 0; clip: rect(1px, 1px, 1px, 1px); clip-path: inset(50%); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute !important; width: 1px; word-wrap: normal !important; }

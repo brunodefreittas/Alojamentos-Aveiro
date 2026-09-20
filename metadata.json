@@ -1,0 +1,6 @@
+{
+  "name": "Alojamentos em Aveiro — Aveiro Sunset & Aveiro White 105",
+  "description": "Apresentação oficial dos alojamentos Aveiro Sunset e Aveiro White 105 em Aveiro, Portugal. Dois espaços confortáveis para ficar, canais e ria para descobrir, com reserva direta no Booking.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
