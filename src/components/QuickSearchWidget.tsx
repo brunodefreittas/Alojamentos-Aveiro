@@ -101,11 +101,11 @@ export const QuickSearchWidget: React.FC<QuickSearchWidgetProps> = ({ lang }) =>
   };
 
   return (
-    <div id="consulta-datas" className="relative z-20 max-w-5xl mx-auto px-4 sm:px-6 -mt-16 sm:-mt-20 mb-16">
-      <div className="bg-[#121622]/95 backdrop-blur-xl border border-[#c5a880]/30 rounded-3xl p-6 sm:p-8 shadow-2xl shadow-black/60">
+    <div id="consulta-datas" className="relative z-20 max-w-5xl mx-auto px-4 sm:px-6 -mt-12 sm:-mt-14 mb-10">
+      <div className="bg-[#121622]/95 backdrop-blur-xl border border-[#c5a880]/30 rounded-3xl p-5 sm:p-6 shadow-2xl shadow-black/60">
         
         {/* Header inside widget */}
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-[#1e2436]">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4 pb-3 border-b border-[#1e2436]">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-2xl bg-[#c5a880]/10 border border-[#c5a880]/30 flex items-center justify-center text-[#c5a880]">
               <Sparkles className="w-5 h-5" />
@@ -148,7 +148,7 @@ export const QuickSearchWidget: React.FC<QuickSearchWidgetProps> = ({ lang }) =>
         </div>
 
         {/* Form Inputs Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-4">
           {/* Check-in */}
           <div className="space-y-1.5">
             <label className="block text-xs uppercase tracking-wider text-[#a39d91] font-medium">
