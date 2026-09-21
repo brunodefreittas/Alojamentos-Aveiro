@@ -5,8 +5,6 @@ import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { QuickSearchWidget } from './components/QuickSearchWidget';
 import { ApartmentsShowcase } from './components/ApartmentsShowcase';
-import { HomeAveiroSection } from './components/HomeAveiroSection';
-import { HomeGastronomySection } from './components/HomeGastronomySection';
 import { DiscoverAveiroSection } from './components/DiscoverAveiroSection';
 import { LocationSection } from './components/LocationSection';
 import { HomeStayAndTestimonials } from './components/HomeStayAndTestimonials';
@@ -109,39 +107,26 @@ export default function App() {
             {/* Quick Availability Check Widget (#consulta-datas) */}
             <QuickSearchWidget lang={lang} />
 
-            {/* 2. Escolha o seu Alojamento (Aveiro Sunset & Aveiro White 105) */}
+             {/* 2. Escolha o seu Alojamento (Aveiro Sunset & Aveiro White 105) */}
             <ApartmentsShowcase
               lang={lang}
               onSelectApartment={handleSelectApartment}
               onOpenPhotoLightbox={handleOpenPhotoLightbox}
             />
 
-            {/* 3. Descubra a Cidade (Canais, Centro, Costa Nova, Praias) */}
-            <HomeAveiroSection
-              lang={lang}
-              onExploreMore={() => handleNavigateSection('descobrir-aveiro')}
-            />
-
-            {/* 4. Sabores de Aveiro (Gastronomia & Ovos Moles) */}
-            <HomeGastronomySection
-              lang={lang}
-              onExploreGastronomy={() => handleNavigateSection('descobrir-aveiro')}
-              onOpenPhotoLightbox={handleOpenPhotoLightbox}
-            />
-
-            {/* 5. Descobrir Aveiro (Guia Editorial e Experiências a partir dos alojamentos) */}
+            {/* 3. Guia Editorial / Descobrir Aveiro */}
             <DiscoverAveiroSection
               lang={lang}
               onOpenPhotoLightbox={handleOpenPhotoLightbox}
             />
 
-            {/* 6. Localização Dedicada com Mapas Interativos e Tempos a Pé */}
+            {/* 4. Localização Dedicada com Mapas Interativos e Tempos a Pé */}
             <LocationSection
               lang={lang}
               onSelectApartment={handleSelectApartment}
             />
 
-            {/* 7. A Sua Estadia, Depoimentos do Booking e Banner Final */}
+            {/* 5. A Sua Estadia, Depoimentos do Booking e Banner Final */}
             <HomeStayAndTestimonials
               lang={lang}
               onSelectApartment={handleSelectApartment}
