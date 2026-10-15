@@ -14,6 +14,7 @@ import { ApartmentView } from './components/ApartmentView';
 import { WhatsAppButton } from './components/WhatsAppButton';
 import { PhotoLightbox } from './components/PhotoLightbox';
 import { CookieConsent } from './components/CookieConsent';
+import { LegalModal, LegalDocType } from './components/LegalModal';
 
 export default function App() {
   const [lang, setLang] = useState<Language>(() => {
@@ -22,6 +23,9 @@ export default function App() {
   });
 
   const [activeApartmentId, setActiveApartmentId] = useState<ApartmentId | null>(null);
+
+  // Legal Modal State
+  const [legalModalType, setLegalModalType] = useState<LegalDocType>(null);
 
   // Lightbox State
   const [lightboxState, setLightboxState] = useState<{
@@ -36,7 +40,6 @@ export default function App() {
     caption: '',
   });
 
-  // Review Modal State
   const handleLanguageChange = (newLang: Language) => {
     setLang(newLang);
     localStorage.setItem('aveiro_lang', newLang);
@@ -148,6 +151,7 @@ export default function App() {
         onSelectApartment={handleSelectApartment}
         onNavigateHome={handleNavigateHome}
         onNavigateSection={handleNavigateSection}
+        onOpenLegal={(type) => setLegalModalType(type)}
       />
 
       {/* Persistent Floating WhatsApp Button */}
@@ -160,6 +164,13 @@ export default function App() {
         fallbackUrl={lightboxState.fallbackUrl}
         caption={lightboxState.caption}
         onClose={handleClosePhotoLightbox}
+      />
+
+      {/* Legal Information Modal */}
+      <LegalModal
+        type={legalModalType}
+        lang={lang}
+        onClose={() => setLegalModalType(null)}
       />
 
       {/* EU GDPR Cookie Consent & Settings */}

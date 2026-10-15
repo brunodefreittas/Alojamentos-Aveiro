@@ -1,7 +1,8 @@
 import React from 'react';
-import { MessageCircle, Mail, ExternalLink } from 'lucide-react';
+import { MessageCircle, Mail, ExternalLink, Shield, FileText, Scale, BookOpen } from 'lucide-react';
 import { Language, ApartmentId } from '../types';
 import { TRANSLATIONS } from '../data/translations';
+import { LegalDocType } from './LegalModal';
 
 interface FooterProps {
   lang: Language;
@@ -9,6 +10,7 @@ interface FooterProps {
   onSelectApartment: (aptId: ApartmentId) => void;
   onNavigateHome: () => void;
   onNavigateSection: (sectionId: string) => void;
+  onOpenLegal: (type: LegalDocType) => void;
 }
 
 export const Footer: React.FC<FooterProps> = ({
@@ -17,8 +19,10 @@ export const Footer: React.FC<FooterProps> = ({
   onSelectApartment,
   onNavigateHome,
   onNavigateSection,
+  onOpenLegal,
 }) => {
   const t = TRANSLATIONS[lang].footer;
+  const legalT = TRANSLATIONS[lang].legal;
 
   return (
     <footer className="bg-[#07080b] text-[#ecebe8] border-t border-[#181d29] pt-16 pb-12">
@@ -131,53 +135,50 @@ export const Footer: React.FC<FooterProps> = ({
             </ul>
           </div>
 
-          {/* Booking & Contact Col */}
+          {/* Legal & Complaints Col */}
           <div>
             <h4 className="text-xs font-semibold text-[#c5a880] uppercase tracking-wider mb-4">
-              {t.contactHeading}
+              {lang === 'pt' ? 'Informação Legal' : 'Legal Information'}
             </h4>
             <ul className="space-y-2.5 text-xs text-[#a09a8e] font-light">
               <li>
-                <a
-                  href="https://www.booking.com/hotel/pt/aveiro-sunset.pt-br.html"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:text-[#c5a880] flex items-center gap-1.5 transition-colors"
+                <button
+                  onClick={() => onOpenLegal('privacy')}
+                  className="hover:text-[#c5a880] transition-colors flex items-center gap-1.5 text-left"
                 >
-                  <span>Booking — Aveiro Sunset</span>
-                  <ExternalLink className="w-3 h-3" />
-                </a>
+                  <Shield className="w-3 h-3 text-[#c5a880]" />
+                  <span>{legalT.privacyLink}</span>
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => onOpenLegal('terms')}
+                  className="hover:text-[#c5a880] transition-colors flex items-center gap-1.5 text-left"
+                >
+                  <FileText className="w-3 h-3 text-[#c5a880]" />
+                  <span>{legalT.termsLink}</span>
+                </button>
               </li>
               <li>
                 <a
-                  href="https://www.booking.com/hotel/pt/aveiro-white-105.pt-br.html"
+                  href="https://www.livroreclamacoes.pt"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-[#c5a880] flex items-center gap-1.5 transition-colors"
+                  className="text-emerald-400 hover:text-emerald-300 transition-colors flex items-center gap-1.5 font-medium"
                 >
-                  <span>Booking — Aveiro White 105</span>
-                  <ExternalLink className="w-3 h-3" />
-                </a>
-              </li>
-              <li className="pt-2">
-                <a
-                  href="https://wa.me/351924323980"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-emerald-400 hover:text-emerald-300 flex items-center gap-1.5 font-medium"
-                >
-                  <MessageCircle className="w-3.5 h-3.5" />
-                  <span>WhatsApp: 924 323 980</span>
+                  <BookOpen className="w-3 h-3" />
+                  <span>{legalT.complaintsLink}</span>
+                  <ExternalLink className="w-2.5 h-2.5" />
                 </a>
               </li>
               <li>
-                <a
-                  href="mailto:contacto@alojamentosaveiro.pt"
-                  className="hover:text-white flex items-center gap-1.5"
+                <button
+                  onClick={() => onOpenLegal('disputes')}
+                  className="hover:text-[#c5a880] transition-colors flex items-center gap-1.5 text-left"
                 >
-                  <Mail className="w-3.5 h-3.5 text-[#c5a880]" />
-                  <span>contacto@alojamentosaveiro.pt</span>
-                </a>
+                  <Scale className="w-3 h-3 text-[#c5a880]" />
+                  <span>{legalT.disputesLink}</span>
+                </button>
               </li>
             </ul>
           </div>
@@ -186,14 +187,14 @@ export const Footer: React.FC<FooterProps> = ({
         {/* Bottom Sub-bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-[11px] text-[#6b675d] gap-4">
           <p>© {new Date().getFullYear()} Alojamentos em Aveiro. {t.allRights}</p>
-          <div className="flex flex-wrap items-center justify-center sm:justify-end gap-4 text-center sm:text-right">
+          <div className="flex flex-wrap items-center justify-center sm:justify-end gap-5 text-center sm:text-right">
             <button
               onClick={() => window.dispatchEvent(new CustomEvent('open-cookie-settings'))}
               className="text-[#9e978b] hover:text-[#c5a880] transition-colors underline underline-offset-4"
             >
               {TRANSLATIONS[lang].cookies.footerLink}
             </button>
-            <span>{t.legalNote}</span>
+            <span className="text-xs text-[#787265]">{t.legalNote}</span>
           </div>
         </div>
       </div>

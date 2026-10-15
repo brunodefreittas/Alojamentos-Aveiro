@@ -151,6 +151,16 @@ export const TRANSLATIONS = {
       alwaysActive: 'Sempre Ativo',
       footerLink: 'Configurações de Cookies',
     },
+    legal: {
+      privacyTitle: 'Política de Privacidade',
+      termsTitle: 'Termos e Condições',
+      disputesTitle: 'Resolução Alternativa de Litígios',
+      privacyLink: 'Política de Privacidade',
+      termsLink: 'Termos e Condições',
+      complaintsLink: 'Livro de Reclamações Online',
+      disputesLink: 'Litígios de Consumo',
+      close: 'Fechar',
+    },
   },
 
   en: {
@@ -304,6 +314,16 @@ export const TRANSLATIONS = {
       marketingDesc: 'Used to remember display preferences or integration with booking platforms and social media.',
       alwaysActive: 'Always Active',
       footerLink: 'Cookie Settings',
+    },
+    legal: {
+      privacyTitle: 'Privacy Policy',
+      termsTitle: 'Terms & Conditions',
+      disputesTitle: 'Consumer Dispute Resolution',
+      privacyLink: 'Privacy Policy',
+      termsLink: 'Terms & Conditions',
+      complaintsLink: 'Online Complaints Book',
+      disputesLink: 'Consumer Disputes',
+      close: 'Close',
     },
   },
 };

@@ -386,7 +386,7 @@ export const APARTMENTS_DATA: Record<'aveiro-sunset' | 'aveiro-white-105', Apart
     postalCode: '3800-165',
     city: 'Aveiro',
     country: 'Portugal',
-    bookingLocationScore: 9.9,
+    bookingLocationScore: 9.3,
     bookingReviewsCount: 40,
     bookingUrl: 'https://www.booking.com/hotel/pt/aveiro-white-105.pt-br.html',
     heroImage: '/images/aveiro-white/aveiro-white-01.jpg',
@@ -420,8 +420,8 @@ export const APARTMENTS_DATA: Record<'aveiro-sunset' | 'aveiro-white-105', Apart
     },
     highlights: [
       {
-        pt: 'Localização imbatível na principal avenida de Aveiro (9,9/10 no Booking)',
-        en: 'Unbeatable address on Aveiro main avenue (9.9/10 location score on Booking)',
+        pt: 'Localização imbatível na principal avenida de Aveiro (9,3/10 no Booking)',
+        en: 'Unbeatable address on Aveiro main avenue (9.3/10 location score on Booking)',
       },
       {
         pt: 'Extremamente silencioso com janelas voltadas para pátio interior pacífico',
@@ -439,7 +439,7 @@ export const APARTMENTS_DATA: Record<'aveiro-sunset' | 'aveiro-white-105', Apart
     amenities: [
       {
         iconName: 'MapPin',
-        label: { pt: 'Localização Central 9,9/10', en: 'Central Location 9.9/10' },
+        label: { pt: 'Localização Central 9,3/10', en: 'Central Location 9.3/10' },
         description: { pt: 'Avenida Dr. Lourenço Peixinho', en: 'On main central avenue' },
       },
       {
