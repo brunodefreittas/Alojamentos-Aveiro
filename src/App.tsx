@@ -13,6 +13,7 @@ import { Footer } from './components/Footer';
 import { ApartmentView } from './components/ApartmentView';
 import { WhatsAppButton } from './components/WhatsAppButton';
 import { PhotoLightbox } from './components/PhotoLightbox';
+import { CookieConsent } from './components/CookieConsent';
 
 export default function App() {
   const [lang, setLang] = useState<Language>(() => {
@@ -160,6 +161,9 @@ export default function App() {
         caption={lightboxState.caption}
         onClose={handleClosePhotoLightbox}
       />
+
+      {/* EU GDPR Cookie Consent & Settings */}
+      <CookieConsent lang={lang} />
     </div>
   );
 }

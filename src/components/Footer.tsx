@@ -186,7 +186,13 @@ export const Footer: React.FC<FooterProps> = ({
         {/* Bottom Sub-bar */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-[11px] text-[#6b675d] gap-4">
           <p>© {new Date().getFullYear()} Alojamentos em Aveiro. {t.allRights}</p>
-          <div className="flex items-center gap-4 text-center sm:text-right">
+          <div className="flex flex-wrap items-center justify-center sm:justify-end gap-4 text-center sm:text-right">
+            <button
+              onClick={() => window.dispatchEvent(new CustomEvent('open-cookie-settings'))}
+              className="text-[#9e978b] hover:text-[#c5a880] transition-colors underline underline-offset-4"
+            >
+              {TRANSLATIONS[lang].cookies.footerLink}
+            </button>
             <span>{t.legalNote}</span>
           </div>
         </div>
