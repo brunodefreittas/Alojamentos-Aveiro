@@ -48,8 +48,7 @@ export interface ApartmentData {
   postalCode: string;
   city: string;
   country: string;
-  bookingLocationScore: number;
-  bookingReviewsCount: number;
+
   bookingUrl: string;
   heroImage: string;
   introTitle: { pt: string; en: string };

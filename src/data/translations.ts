@@ -12,7 +12,7 @@ export const TRANSLATIONS = {
     },
     hero: {
       eyebrow: 'ESTADIA EM AVEIRO',
-      title: 'Fique em Aveiro. Descubra a cidade ao seu ritmo.',
+      title: 'Alojamentos em Aveiro. Descubra a cidade ao seu ritmo.',
       text: 'Entre canais, moliceiros, sabores tradicionais e passeios junto à ria, Aveiro convida a ficar mais um pouco. Escolha o alojamento que combina consigo e aproveite a cidade com todo o conforto.',
       cta: 'Conhecer os alojamentos',
       secondaryCta: 'Descobrir Aveiro',
@@ -21,7 +21,6 @@ export const TRANSLATIONS = {
       title: 'Dois espaços. Uma cidade para descobrir.',
       text: 'Escolha o espaço que melhor combina com a sua estadia e tenha Aveiro como ponto de partida para dias de descanso, descoberta e bons momentos.',
       cta: 'Conhecer alojamento',
-      ratingNote: 'Baseado em avaliações de hóspedes no Booking',
       viewOnBooking: 'Ver no Booking',
     },
     aveiroIntro: {
@@ -89,8 +88,6 @@ export const TRANSLATIONS = {
       locationTitle: 'Aveiro começa à porta.',
       pointsOfInterestTitle: 'Pontos de interesse a pé',
       minutesWalk: 'min a pé',
-      bookingScoreLabel: 'Avaliação de localização no Booking',
-      basedOnReviews: 'Com base em avaliações verificadas de hóspedes',
       bookButton: 'Reservar no Booking',
       interestedQuestion: 'Gostou deste espaço?',
       interestedText: 'Consulte a disponibilidade e faça a sua reserva com total segurança através do Booking.',
@@ -185,7 +182,6 @@ export const TRANSLATIONS = {
       title: 'Two spaces. One inspiring city to discover.',
       text: 'Select the accommodation that best matches your trip and make Aveiro your starting point for restful days, authentic discoveries, and memorable moments.',
       cta: 'View accommodation',
-      ratingNote: 'Based on genuine guest reviews on Booking',
       viewOnBooking: 'View on Booking',
     },
     aveiroIntro: {
@@ -253,8 +249,6 @@ export const TRANSLATIONS = {
       locationTitle: 'Aveiro begins at your door.',
       pointsOfInterestTitle: 'Points of interest within walking distance',
       minutesWalk: 'min walk',
-      bookingScoreLabel: 'Booking.com Location Rating',
-      basedOnReviews: 'Based on verified guest reviews',
       bookButton: 'Book on Booking.com',
       interestedQuestion: 'Enjoyed this accommodation?',
       interestedText: 'Check real-time availability and confirm your stay securely via Booking.com.',

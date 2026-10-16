@@ -55,14 +55,6 @@ export const ApartmentsShowcase: React.FC<ApartmentsShowcaseProps> = ({
             />
             <div className="absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r from-[#11141c] via-transparent to-transparent opacity-80 pointer-events-none" />
 
-            {/* Booking Score Badge */}
-            <div className="absolute top-4 left-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[#003580]/90 text-white backdrop-blur-md border border-[#1e4c9a] shadow-lg">
-              <span className="text-xs font-semibold tracking-wider">Booking.com</span>
-              <span className="px-1.5 py-0.5 rounded bg-white text-[#003580] text-xs font-bold">
-                {white.bookingLocationScore.toString().replace('.', ',')}
-              </span>
-            </div>
-
             {/* Quick Tag */}
             <span className="absolute top-4 right-4 px-3 py-1 rounded-full text-[11px] font-medium tracking-wide bg-[#0a0c10]/80 text-[#c5a880] border border-[#c5a880]/30 backdrop-blur-md">
               {lang === 'pt' ? 'Centro & Estação' : 'Center & Station'}
@@ -84,11 +76,7 @@ export const ApartmentsShowcase: React.FC<ApartmentsShowcaseProps> = ({
                 <span>{white.address}, {white.city}</span>
               </div>
 
-              <div className="text-[11px] text-[#787265] mb-5">
-                {lang === 'pt'
-                  ? `Localização no Booking: 9,3/10 — Com base em ${white.bookingReviewsCount} avaliações de hóspedes após a estadia.`
-                  : `Booking.com location: 9.3/10 — Based on ${white.bookingReviewsCount} verified guest reviews.`}
-              </div>
+
 
               <p className="text-sm text-[#b8b3a7] font-light leading-relaxed mb-6">
                 {white.homeCardText[lang]}

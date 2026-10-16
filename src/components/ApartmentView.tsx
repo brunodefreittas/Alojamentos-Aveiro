@@ -107,20 +107,7 @@ export const ApartmentView: React.FC<ApartmentViewProps> = ({
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[#0a0c10] via-[#0a0c10]/85 to-[#0a0c10]/60" />
 
-            {/* Top badges */}
-            <div className="relative z-10 flex flex-wrap items-center gap-2.5">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[#003580]/95 text-white backdrop-blur-md border border-[#1e4c9a] shadow-lg">
-                <span className="text-xs font-semibold tracking-wider">Booking.com</span>
-                <span className="px-1.5 py-0.5 rounded bg-white text-[#003580] text-xs font-bold">
-                  {apartment.bookingLocationScore.toString().replace('.', ',')}
-                </span>
-              </div>
-              <span className="text-[11px] text-[#e0ded8] bg-[#0a0c10]/90 border border-[#2c354a] px-3 py-1.5 rounded-xl backdrop-blur-md">
-                {lang === 'pt'
-                  ? `Baseado em ${apartment.bookingReviewsCount} avaliações`
-                  : `Based on ${apartment.bookingReviewsCount} reviews`}
-              </span>
-            </div>
+
 
             {/* Bottom Hero Content */}
             <div className="relative z-10 flex flex-col md:flex-row md:items-end justify-between gap-6 mt-12 sm:mt-0">

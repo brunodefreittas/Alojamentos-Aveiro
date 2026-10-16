@@ -40,13 +40,10 @@ export const LocationSection: React.FC<LocationSectionProps> = ({
           {/* Left Info Column */}
           <div className="lg:col-span-5 flex flex-col justify-between p-8 rounded-3xl bg-[#11141c] border border-[#232b3d] shadow-xl">
             <div>
-              <div className="flex items-center justify-between mb-4">
+              <div className="mb-4">
                 <h3 className="font-serif text-2xl sm:text-3xl text-[#fbf8f3]">
                   {currentApartment.name}
                 </h3>
-                <span className="px-2.5 py-1 rounded-lg bg-[#003580] text-white text-xs font-bold">
-                  {currentApartment.bookingLocationScore.toString().replace('.', ',')} / 10
-                </span>
               </div>
 
               <div className="flex items-start gap-2 text-xs text-[#b0aaa0] mb-6 font-light">
