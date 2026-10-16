@@ -1,7 +1,8 @@
 import React from 'react';
-import { Star, Quote, ExternalLink, ArrowRight, Sparkles, BedDouble } from 'lucide-react';
+import { Star, ExternalLink, ArrowRight, Sparkles, BedDouble } from 'lucide-react';
 import { Language, ApartmentId } from '../types';
 import { TRANSLATIONS } from '../data/translations';
+import { APARTMENTS_DATA } from '../data/apartmentsData';
 
 interface HomeStayAndTestimonialsProps {
   lang: Language;
@@ -19,45 +20,7 @@ export const HomeStayAndTestimonials: React.FC<HomeStayAndTestimonialsProps> = (
   const tStay = TRANSLATIONS[lang].stay;
   const tTestimonials = TRANSLATIONS[lang].testimonials;
   const tFinal = TRANSLATIONS[lang].finalCta;
-
-  const featuredReviews = [
-    {
-      author: 'Nuno',
-      country: 'Portugal',
-      apartment: 'Aveiro Sunset',
-      rating: 5,
-      comment:
-        'O apartamento é fenomenal, as grandes janelas para o canal de Aveiro torna este pequeno apartamento muito bonito é a atração deste apartamento sem dúvida se não fosse isso era um simples e pequeno espaço, á noite dá um ar romântico até parece cena de filme de Hollywood 😆 é diferente de tudo onde já tinha ficado nesta cidade, notasse que é novo e equipado com tudo o que faz falta, gostei da experiência. Tudo muito limpo e cheiroso.',
-      bookingUrl: 'https://www.booking.com/hotel/pt/aveiro-sunset.pt-br.html',
-    },
-    {
-      author: 'Patrick',
-      country: 'Portugal',
-      apartment: 'Aveiro White 105',
-      rating: 5,
-      comment:
-        'Apartamento impecável, como novo e super bem localizado. Check-in super simples Arejado e moderno Cama maravilhosa.',
-      bookingUrl: 'https://www.booking.com/hotel/pt/aveiro-white-105.pt-br.html',
-    },
-    {
-      author: 'Andrea',
-      country: 'Suécia',
-      apartment: 'Aveiro White 105',
-      rating: 5,
-      comment:
-        "I can't believe there weren't more people leaving a review for this place. Super easy instructions. Super responsive host. Beautiful and clean apartment. Comfortable bed. Great location. Just a few minutes' walk from the station. Extremely quiet, indoor facing.",
-      bookingUrl: 'https://www.booking.com/hotel/pt/aveiro-white-105.pt-br.html',
-    },
-    {
-      author: 'Xavier',
-      country: 'España',
-      apartment: 'Aveiro Sunset',
-      rating: 5,
-      comment:
-        'Decoración muy cuidada, con mucho gusto y estilo, se nota el cariño con el que se ha realizado. La ubicación es excelente, con un parking gratuito a pocos metros. Cama cómoda.',
-      bookingUrl: 'https://www.booking.com/hotel/pt/aveiro-sunset.pt-br.html',
-    },
-  ];
+  const white = APARTMENTS_DATA['aveiro-white-105'];
 
   return (
     <div className="bg-[#0e1118] text-[#ecebe8]">
@@ -108,7 +71,7 @@ export const HomeStayAndTestimonials: React.FC<HomeStayAndTestimonialsProps> = (
 
             <div className="flex items-center gap-3">
               <a
-                href="https://www.booking.com/hotel/pt/aveiro-sunset.pt-br.html"
+                href={white.bookingUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl bg-[#003580] hover:bg-[#002b66] text-white text-xs font-medium border border-[#1e4c9a] transition-colors"
@@ -120,10 +83,10 @@ export const HomeStayAndTestimonials: React.FC<HomeStayAndTestimonialsProps> = (
           </div>
 
           {/* Testimonials Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {featuredReviews.map((rev, idx) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {white.reviews.slice(0, 3).map((rev) => (
               <div
-                key={idx}
+                key={rev.id}
                 className="p-6 sm:p-7 rounded-2xl bg-[#11141c] border border-[#1e2434] hover:border-[#c5a880]/30 transition-all duration-200 flex flex-col justify-between"
               >
                 <div>
@@ -134,7 +97,7 @@ export const HomeStayAndTestimonials: React.FC<HomeStayAndTestimonialsProps> = (
                       ))}
                     </div>
                     <span className="text-[11px] font-medium px-2.5 py-1 rounded-full bg-[#181d2c] text-[#a09a8e] border border-[#252c3f]">
-                      {rev.apartment}
+                      {white.name}
                     </span>
                   </div>
 
@@ -149,7 +112,7 @@ export const HomeStayAndTestimonials: React.FC<HomeStayAndTestimonialsProps> = (
                     <span className="text-[#787265] ml-2">({rev.country})</span>
                   </div>
                   <a
-                    href={rev.bookingUrl}
+                    href={white.bookingUrl}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-[11px] text-[#c5a880] hover:underline flex items-center gap-1 font-medium"

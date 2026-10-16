@@ -1,6 +1,6 @@
 export type Language = 'pt' | 'en';
 
-export type ApartmentId = 'aveiro-sunset' | 'aveiro-white-105';
+export type ApartmentId = 'aveiro-white-105';
 
 export interface PointOfInterest {
   id: string;

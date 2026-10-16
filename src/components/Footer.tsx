@@ -1,5 +1,5 @@
 import React from 'react';
-import { MessageCircle, Mail, ExternalLink, Shield, FileText, Scale, BookOpen } from 'lucide-react';
+import { ExternalLink, Shield, FileText, Scale, BookOpen } from 'lucide-react';
 import { Language, ApartmentId } from '../types';
 import { TRANSLATIONS } from '../data/translations';
 import { LegalDocType } from './LegalModal';
@@ -27,14 +27,14 @@ export const Footer: React.FC<FooterProps> = ({
   return (
     <footer className="bg-[#07080b] text-[#ecebe8] border-t border-[#181d29] pt-16 pb-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-16 border-b border-[#181d29]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-16 border-b border-[#181d29]">
           {/* Brand Col */}
-          <div className="lg:col-span-2 space-y-4">
+          <div className="lg:col-span-1 space-y-4">
             <button
               onClick={onNavigateHome}
               className="text-left font-serif text-xl sm:text-2xl text-[#fbf8f3] hover:text-[#c5a880] transition-colors"
             >
-              Alojamentos em Aveiro
+              Alojamento em Aveiro
             </button>
             <p className="text-xs sm:text-sm text-[#8e887d] font-light max-w-sm leading-relaxed">
               {t.brandDesc}
@@ -75,14 +75,6 @@ export const Footer: React.FC<FooterProps> = ({
               {t.apartmentsHeading}
             </h4>
             <ul className="space-y-2.5 text-xs text-[#a09a8e] font-light">
-              <li>
-                <button
-                  onClick={() => onSelectApartment('aveiro-sunset')}
-                  className="hover:text-[#c5a880] transition-colors text-left"
-                >
-                  Aveiro Sunset (Rua Abel Ribeiro)
-                </button>
-              </li>
               <li>
                 <button
                   onClick={() => onSelectApartment('aveiro-white-105')}

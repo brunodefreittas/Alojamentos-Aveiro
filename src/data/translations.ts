@@ -125,7 +125,7 @@ export const TRANSLATIONS = {
       floatingWhatsappSub: 'Estamos disponíveis através do WhatsApp.',
     },
     footer: {
-      brandDesc: 'Dois espaços para ficar. Uma cidade para descobrir.',
+      brandDesc: 'Um espaço acolhedor e central para ficar. Uma cidade para descobrir.',
       apartmentsHeading: 'Alojamentos',
       discoverHeading: 'Descobrir',
       contactHeading: 'Contacto',
@@ -289,7 +289,7 @@ export const TRANSLATIONS = {
       floatingWhatsappSub: 'We are available on WhatsApp.',
     },
     footer: {
-      brandDesc: 'Two serene spaces to stay. One delightful city to discover.',
+      brandDesc: 'A cozy and central place to stay. One delightful city to discover.',
       apartmentsHeading: 'Accommodations',
       discoverHeading: 'Discover',
       contactHeading: 'Contact',

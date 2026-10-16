@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { MapPin, Navigation, ExternalLink, Sparkles, Building, Waves } from 'lucide-react';
+import React from 'react';
+import { MapPin, Navigation, ExternalLink } from 'lucide-react';
 import { Language, ApartmentId } from '../types';
 import { APARTMENTS_DATA } from '../data/apartmentsData';
 
@@ -12,9 +12,7 @@ export const LocationSection: React.FC<LocationSectionProps> = ({
   lang,
   onSelectApartment,
 }) => {
-  const [selectedTab, setSelectedTab] = useState<ApartmentId>('aveiro-sunset');
-
-  const currentApartment = APARTMENTS_DATA[selectedTab];
+  const currentApartment = APARTMENTS_DATA['aveiro-white-105'];
 
   return (
     <section id="localizacao" className="py-24 bg-[#0d1017] text-[#ecebe8] border-t border-[#1a1f2c]">
@@ -32,36 +30,9 @@ export const LocationSection: React.FC<LocationSectionProps> = ({
 
           <p className="text-sm sm:text-base text-[#a09a8e] font-light leading-relaxed">
             {lang === 'pt'
-              ? 'Mais do que saber onde fica o alojamento, queremos que sinta o que existe à sua volta. Duas localizações pensadas para descobrir a cidade inteiramente a pé.'
-              : 'Beyond knowing where your accommodation sits, we want you to envision what awaits around you. Two settings curated for effortless exploration on foot.'}
+              ? 'Uma localização central pensada para descobrir a cidade inteiramente a pé, com acesso rápido a tudo o que importa.'
+              : 'A central setting curated for effortless exploration on foot, with quick access to everything that matters.'}
           </p>
-        </div>
-
-        {/* Accommodation Selector Tabs */}
-        <div className="flex flex-wrap items-center gap-3 mb-10">
-          <button
-            onClick={() => setSelectedTab('aveiro-sunset')}
-            className={`flex items-center gap-2.5 px-5 py-3 rounded-2xl text-xs sm:text-sm font-medium transition-all ${
-              selectedTab === 'aveiro-sunset'
-                ? 'bg-[#c5a880] text-[#0a0c10] shadow-lg shadow-[#c5a880]/10'
-                : 'bg-[#141824] text-[#a09a8e] hover:text-[#ecebe8] border border-[#232b3d]'
-            }`}
-          >
-            <Waves className="w-4 h-4" />
-            <span>Aveiro Sunset (Rua Abel Ribeiro)</span>
-          </button>
-
-          <button
-            onClick={() => setSelectedTab('aveiro-white-105')}
-            className={`flex items-center gap-2.5 px-5 py-3 rounded-2xl text-xs sm:text-sm font-medium transition-all ${
-              selectedTab === 'aveiro-white-105'
-                ? 'bg-[#c5a880] text-[#0a0c10] shadow-lg shadow-[#c5a880]/10'
-                : 'bg-[#141824] text-[#a09a8e] hover:text-[#ecebe8] border border-[#232b3d]'
-            }`}
-          >
-            <Building className="w-4 h-4" />
-            <span>Aveiro White 105 (Av. Lourenço Peixinho)</span>
-          </button>
         </div>
 
         {/* Active Accommodation Details Card & Map */}

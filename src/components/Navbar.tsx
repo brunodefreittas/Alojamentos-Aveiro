@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Menu, X, ChevronDown, ExternalLink, Globe, Compass, Home, Download } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Menu, X, ExternalLink, Globe, Home } from 'lucide-react';
 import { Language, ApartmentId } from '../types';
 import { TRANSLATIONS } from '../data/translations';
 
@@ -22,10 +22,6 @@ export const Navbar: React.FC<NavbarProps> = ({
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isApartmentsDropdownOpen, setIsApartmentsDropdownOpen] = useState(false);
-
-  const dropdownRef = useRef<HTMLDivElement | null>(null);
-  const dropdownTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const t = TRANSLATIONS[lang].nav;
 
@@ -37,62 +33,8 @@ export const Navbar: React.FC<NavbarProps> = ({
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Close dropdown on outside click or Escape key
-  useEffect(() => {
-    const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsApartmentsDropdownOpen(false);
-      }
-    };
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
-        setIsApartmentsDropdownOpen(false);
-      }
-    };
-
-    document.addEventListener('mousedown', handleClickOutside);
-    document.addEventListener('keydown', handleKeyDown);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-      document.removeEventListener('keydown', handleKeyDown);
-      if (dropdownTimeoutRef.current) {
-        clearTimeout(dropdownTimeoutRef.current);
-      }
-    };
-  }, []);
-
-  const handleMouseEnterDropdown = () => {
-    if (dropdownTimeoutRef.current) {
-      clearTimeout(dropdownTimeoutRef.current);
-      dropdownTimeoutRef.current = null;
-    }
-    setIsApartmentsDropdownOpen(true);
-  };
-
-  const handleMouseLeaveDropdown = () => {
-    if (dropdownTimeoutRef.current) {
-      clearTimeout(dropdownTimeoutRef.current);
-    }
-    dropdownTimeoutRef.current = setTimeout(() => {
-      setIsApartmentsDropdownOpen(false);
-    }, 250);
-  };
-
-  const handleToggleApartmentsDropdown = (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    if (dropdownTimeoutRef.current) {
-      clearTimeout(dropdownTimeoutRef.current);
-    }
-    setIsApartmentsDropdownOpen(prev => !prev);
-  };
-
   const handleApartmentClick = (aptId: ApartmentId) => {
-    if (dropdownTimeoutRef.current) {
-      clearTimeout(dropdownTimeoutRef.current);
-    }
     onSelectApartment(aptId);
-    setIsApartmentsDropdownOpen(false);
     setIsMobileMenuOpen(false);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -135,7 +77,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               <span>Alojamentos em Aveiro</span>
             </div>
             <p className="text-[11px] text-[#9b9588] tracking-widest uppercase font-light pl-4">
-              Aveiro Sunset & White 105
+              Aveiro White 105
             </p>
           </button>
 
@@ -150,68 +92,28 @@ export const Navbar: React.FC<NavbarProps> = ({
               {t.home}
             </button>
 
-            {/* Apartments Dropdown */}
-            <div
-              ref={dropdownRef}
-              className="relative py-1"
-              onMouseEnter={handleMouseEnterDropdown}
-              onMouseLeave={handleMouseLeaveDropdown}
+            <button
+              onClick={() => handleApartmentClick('aveiro-white-105')}
+              className={`hover:text-[#c5a880] transition-colors py-1 ${
+                activeApartment === 'aveiro-white-105' ? 'text-[#c5a880] font-medium' : 'text-[#c4beb3]'
+              }`}
             >
-              <button
-                type="button"
-                onClick={handleToggleApartmentsDropdown}
-                aria-expanded={isApartmentsDropdownOpen}
-                aria-haspopup="true"
-                className={`flex items-center gap-1.5 transition-colors py-1 cursor-pointer select-none ${
-                  activeApartment || isApartmentsDropdownOpen
-                    ? 'text-[#c5a880] font-medium'
-                    : 'text-[#c4beb3] hover:text-[#c5a880]'
-                }`}
-              >
-                <span>{t.apartments}</span>
-                <ChevronDown
-                  className={`w-3.5 h-3.5 transition-transform duration-200 ${
-                    isApartmentsDropdownOpen ? 'rotate-180 text-[#c5a880]' : ''
-                  }`}
-                />
-              </button>
+              Aveiro White 105
+            </button>
 
-              {isApartmentsDropdownOpen && (
-                <div
-                  className="absolute top-full left-0 pt-2.5 w-64 z-50"
-                  onMouseEnter={handleMouseEnterDropdown}
-                  onMouseLeave={handleMouseLeaveDropdown}
-                >
-                  <div className="rounded-2xl bg-[#131620]/95 backdrop-blur-xl border border-[#262e40] shadow-2xl p-2 animate-in fade-in slide-in-from-top-2 duration-150">
-                    <button
-                      type="button"
-                      onClick={() => handleApartmentClick('aveiro-sunset')}
-                      className={`w-full text-left px-3.5 py-3 rounded-xl text-xs transition-colors flex flex-col cursor-pointer ${
-                        activeApartment === 'aveiro-sunset'
-                          ? 'bg-[#1b2030] text-[#c5a880]'
-                          : 'text-[#e0ded8] hover:bg-[#1a1e2b] hover:text-[#c5a880]'
-                      }`}
-                    >
-                      <span className="font-serif text-sm font-medium text-[#fbf8f3]">Aveiro Sunset</span>
-                      <span className="text-[11px] text-[#9b9588] mt-0.5">Rua de Abel Ribeiro (Vista Canal)</span>
-                    </button>
+            <button
+              onClick={() => handleSectionClick('descobrir-aveiro')}
+              className="text-[#c4beb3] hover:text-[#c5a880] transition-colors py-1"
+            >
+              {t.discover}
+            </button>
 
-                    <button
-                      type="button"
-                      onClick={() => handleApartmentClick('aveiro-white-105')}
-                      className={`w-full text-left px-3.5 py-3 rounded-xl text-xs transition-colors flex flex-col mt-1 cursor-pointer ${
-                        activeApartment === 'aveiro-white-105'
-                          ? 'bg-[#1b2030] text-[#c5a880]'
-                          : 'text-[#e0ded8] hover:bg-[#1a1e2b] hover:text-[#c5a880]'
-                      }`}
-                    >
-                      <span className="font-serif text-sm font-medium text-[#fbf8f3]">Aveiro White 105</span>
-                      <span className="text-[11px] text-[#9b9588] mt-0.5">Av. Dr. Lourenço Peixinho (Central)</span>
-                    </button>
-                  </div>
-                </div>
-              )}
-            </div>
+            <button
+              onClick={() => handleSectionClick('localizacao')}
+              className="text-[#c4beb3] hover:text-[#c5a880] transition-colors py-1"
+            >
+              {t.location}
+            </button>
 
             <button
               onClick={() => handleSectionClick('contacto')}
@@ -250,11 +152,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             {/* Direct Booking CTA */}
             {activeApartment ? (
               <a
-                href={
-                  activeApartment === 'aveiro-sunset'
-                    ? 'https://www.booking.com/hotel/pt/aveiro-sunset.pt-br.html'
-                    : 'https://www.booking.com/hotel/pt/aveiro-white-105.pt-br.html'
-                }
+                href="https://www.booking.com/hotel/pt/aveiro-white-105.pt-br.html"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs uppercase tracking-wider font-medium bg-[#003580] hover:bg-[#002b66] text-white border border-[#1e4c9a] shadow-md transition-all duration-200"
@@ -309,25 +207,9 @@ export const Navbar: React.FC<NavbarProps> = ({
               <Home className="w-4 h-4 text-[#9b9588]" />
             </button>
 
-            <div className="pt-2 pb-1 px-3 text-[11px] font-semibold text-[#8e887d] uppercase tracking-wider">
-              {t.apartments}
-            </div>
-
-            <button
-              onClick={() => handleApartmentClick('aveiro-sunset')}
-              className={`w-full text-left px-3 py-2 rounded-xl text-sm ${
-                activeApartment === 'aveiro-sunset'
-                  ? 'bg-[#181d2c] text-[#c5a880] font-medium'
-                  : 'text-[#d6d2c9] hover:bg-[#141824]'
-              }`}
-            >
-              <div className="font-serif">Aveiro Sunset</div>
-              <div className="text-[11px] text-[#9b9588]">Rua de Abel Ribeiro (Canal)</div>
-            </button>
-
             <button
               onClick={() => handleApartmentClick('aveiro-white-105')}
-              className={`w-full text-left px-3 py-2 rounded-xl text-sm ${
+              className={`w-full text-left px-3 py-2.5 rounded-xl text-sm ${
                 activeApartment === 'aveiro-white-105'
                   ? 'bg-[#181d2c] text-[#c5a880] font-medium'
                   : 'text-[#d6d2c9] hover:bg-[#141824]'
@@ -337,27 +219,29 @@ export const Navbar: React.FC<NavbarProps> = ({
               <div className="text-[11px] text-[#9b9588]">Av. Dr. Lourenço Peixinho (Centro)</div>
             </button>
 
-            <div className="pt-2 border-t border-[#1e2434] mt-2">
-              <button
-                onClick={() => handleSectionClick('contacto')}
-                className="w-full text-left px-3 py-2.5 rounded-xl text-sm text-[#d6d2c9] hover:bg-[#141824]"
-              >
-                {t.contact}
-              </button>
-            </div>
+            <button
+              onClick={() => handleSectionClick('descobrir-aveiro')}
+              className="w-full text-left px-3 py-2.5 rounded-xl text-sm text-[#d6d2c9] hover:bg-[#141824]"
+            >
+              {t.discover}
+            </button>
+
+            <button
+              onClick={() => handleSectionClick('localizacao')}
+              className="w-full text-left px-3 py-2.5 rounded-xl text-sm text-[#d6d2c9] hover:bg-[#141824]"
+            >
+              {t.location}
+            </button>
+
+            <button
+              onClick={() => handleSectionClick('contacto')}
+              className="w-full text-left px-3 py-2.5 rounded-xl text-sm text-[#d6d2c9] hover:bg-[#141824]"
+            >
+              {t.contact}
+            </button>
           </div>
 
           <div className="pt-2 border-t border-[#1e2434] space-y-2">
-            <a
-              href="https://www.booking.com/hotel/pt/aveiro-sunset.pt-br.html"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center justify-between w-full px-4 py-2.5 rounded-xl bg-[#003580] text-white text-xs font-medium"
-            >
-              <span>Booking — Aveiro Sunset</span>
-              <ExternalLink className="w-3.5 h-3.5" />
-            </a>
-
             <a
               href="https://www.booking.com/hotel/pt/aveiro-white-105.pt-br.html"
               target="_blank"

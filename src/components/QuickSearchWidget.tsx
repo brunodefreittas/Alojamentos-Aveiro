@@ -8,12 +8,12 @@ interface QuickSearchWidgetProps {
 }
 
 export const QuickSearchWidget: React.FC<QuickSearchWidgetProps> = ({ lang }) => {
-  const [selectedApt, setSelectedApt] = useState<ApartmentId>('aveiro-sunset');
+  const [selectedApt, setSelectedApt] = useState<ApartmentId>('aveiro-white-105');
   const [checkIn, setCheckIn] = useState<string>('');
   const [checkOut, setCheckOut] = useState<string>('');
   const [guests, setGuests] = useState<number>(2);
 
-  const apartment = APARTMENTS_DATA[selectedApt];
+  const apartment = APARTMENTS_DATA[selectedApt] || APARTMENTS_DATA['aveiro-white-105'];
 
   // Quick date presets
   const applyPreset = (type: 'weekend' | 'tomorrow' | 'nextWeek') => {
@@ -120,30 +120,10 @@ export const QuickSearchWidget: React.FC<QuickSearchWidgetProps> = ({ lang }) =>
             </div>
           </div>
 
-          {/* Apartment Selector Tabs */}
-          <div className="flex items-center gap-1.5 bg-[#0a0c10] p-1.5 rounded-2xl border border-[#1e2436]">
-            <button
-              onClick={() => setSelectedApt('aveiro-sunset')}
-              className={`px-3 py-2 rounded-xl text-xs font-medium transition-all flex items-center gap-2 ${
-                selectedApt === 'aveiro-sunset'
-                  ? 'bg-[#c5a880] text-[#0a0c10] shadow'
-                  : 'text-[#a39d91] hover:text-[#fbf8f3]'
-              }`}
-            >
-              <Building2 className="w-3.5 h-3.5" />
-              <span>Aveiro Sunset</span>
-            </button>
-            <button
-              onClick={() => setSelectedApt('aveiro-white-105')}
-              className={`px-3 py-2 rounded-xl text-xs font-medium transition-all flex items-center gap-2 ${
-                selectedApt === 'aveiro-white-105'
-                  ? 'bg-[#c5a880] text-[#0a0c10] shadow'
-                  : 'text-[#a39d91] hover:text-[#fbf8f3]'
-              }`}
-            >
-              <Building2 className="w-3.5 h-3.5" />
-              <span>Aveiro White 105</span>
-            </button>
+          {/* Single Apartment Indicator */}
+          <div className="flex items-center gap-2 bg-[#0a0c10] px-4 py-2 rounded-2xl border border-[#1e2436]">
+            <Building2 className="w-4 h-4 text-[#c5a880]" />
+            <span className="text-xs font-medium text-[#fbf8f3]">Aveiro White 105</span>
           </div>
         </div>
 

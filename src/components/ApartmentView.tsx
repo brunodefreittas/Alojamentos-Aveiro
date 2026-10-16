@@ -296,11 +296,7 @@ export const ApartmentView: React.FC<ApartmentViewProps> = ({
             {t.locationTitle}
           </h3>
           <p className="text-xs sm:text-sm text-[#a09a8e] font-light">
-            {apartment.id === 'aveiro-sunset'
-              ? lang === 'pt'
-                ? 'O Aveiro Sunset está situado na Rua de Abel Ribeiro, numa zona que permite explorar a cidade e chegar facilmente aos seus principais pontos de interesse.'
-                : 'Aveiro Sunset is located on Rua de Abel Ribeiro, a prime setting allowing you to explore the city and easily stroll to key landmarks.'
-              : lang === 'pt'
+            {lang === 'pt'
               ? 'O Aveiro White 105 está situado na Avenida Doutor Lourenço Peixinho, numa localização central que permite explorar Aveiro e descobrir a cidade a pé.'
               : 'Aveiro White 105 is situated on Avenida Doutor Lourenço Peixinho, a central avenue providing immediate access to explore Aveiro on foot.'}
           </p>
