@@ -10,6 +10,7 @@ interface FooterProps {
   onSelectApartment: (aptId: ApartmentId) => void;
   onNavigateHome: () => void;
   onNavigateSection: (sectionId: string) => void;
+  onNavigateRealEstate: () => void;
   onOpenLegal: (type: LegalDocType) => void;
 }
 
@@ -19,6 +20,7 @@ export const Footer: React.FC<FooterProps> = ({
   onSelectApartment,
   onNavigateHome,
   onNavigateSection,
+  onNavigateRealEstate,
   onOpenLegal,
 }) => {
   const t = TRANSLATIONS[lang].footer;
@@ -72,7 +74,7 @@ export const Footer: React.FC<FooterProps> = ({
           {/* Accommodations Col */}
           <div>
             <h4 className="text-xs font-semibold text-[#c5a880] uppercase tracking-wider mb-4">
-              {t.apartmentsHeading}
+              {TRANSLATIONS[lang].nav.apartments}
             </h4>
             <ul className="space-y-2.5 text-xs text-[#a09a8e] font-light">
               <li>
@@ -80,16 +82,16 @@ export const Footer: React.FC<FooterProps> = ({
                   onClick={() => onSelectApartment('aveiro-white-105')}
                   className="hover:text-[#c5a880] transition-colors text-left"
                 >
-                  Aveiro White 105 (Av. Lourenço Peixinho)
+                  Aveiro White 105
                 </button>
               </li>
             </ul>
           </div>
 
-          {/* Navigation Links Col */}
+          {/* Navigation Links Col (Replicating Top Menu) */}
           <div>
             <h4 className="text-xs font-semibold text-[#c5a880] uppercase tracking-wider mb-4">
-              {t.discoverHeading}
+              {lang === 'pt' ? 'Menu' : 'Menu'}
             </h4>
             <ul className="space-y-2.5 text-xs text-[#a09a8e] font-light">
               <li>
@@ -98,6 +100,14 @@ export const Footer: React.FC<FooterProps> = ({
                   className="hover:text-[#c5a880] transition-colors"
                 >
                   {TRANSLATIONS[lang].nav.home}
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => onSelectApartment('aveiro-white-105')}
+                  className="hover:text-[#c5a880] transition-colors"
+                >
+                  {TRANSLATIONS[lang].nav.apartments}
                 </button>
               </li>
               <li>
@@ -122,6 +132,14 @@ export const Footer: React.FC<FooterProps> = ({
                   className="hover:text-[#c5a880] transition-colors"
                 >
                   {TRANSLATIONS[lang].nav.contact}
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={onNavigateRealEstate}
+                  className="hover:text-[#c5a880] transition-colors text-[#c5a880] font-medium"
+                >
+                  {TRANSLATIONS[lang].nav.realEstate}
                 </button>
               </li>
             </ul>

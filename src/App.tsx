@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Language, ApartmentId } from './types';
 import { APARTMENTS_DATA } from './data/apartmentsData';
 import { Navbar } from './components/Navbar';
@@ -15,6 +15,12 @@ import { WhatsAppButton } from './components/WhatsAppButton';
 import { PhotoLightbox } from './components/PhotoLightbox';
 import { CookieConsent } from './components/CookieConsent';
 import { LegalModal, LegalDocType } from './components/LegalModal';
+import { RealEstateHeroBanner } from './components/RealEstateHeroBanner';
+import { RealEstateSection } from './components/RealEstateSection';
+import { AdminLogin } from './components/AdminLogin';
+import { AdminDashboard } from './components/AdminDashboard';
+
+export type AppView = 'accommodation' | 'real-estate' | 'admin-login' | 'admin-dashboard';
 
 export default function App() {
   const [lang, setLang] = useState<Language>(() => {
@@ -23,6 +29,7 @@ export default function App() {
   });
 
   const [activeApartmentId, setActiveApartmentId] = useState<ApartmentId | null>(null);
+  const [currentView, setCurrentView] = useState<AppView>('accommodation');
 
   // Legal Modal State
   const [legalModalType, setLegalModalType] = useState<LegalDocType>(null);
@@ -59,16 +66,19 @@ export default function App() {
   };
 
   const handleSelectApartment = (aptId: ApartmentId | null) => {
+    setCurrentView('accommodation');
     setActiveApartmentId(aptId);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleNavigateHome = () => {
+    setCurrentView('accommodation');
     setActiveApartmentId(null);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   const handleNavigateSection = (sectionId: string) => {
+    setCurrentView('accommodation');
     setActiveApartmentId(null);
     setTimeout(() => {
       const el = document.getElementById(sectionId);
@@ -77,6 +87,42 @@ export default function App() {
       }
     }, 150);
   };
+
+  // Check admin session on mount
+  useEffect(() => {
+    const isAdminLogged = localStorage.getItem('aveiro_admin_logged') === 'true';
+    // If user is trying to access admin
+  }, []);
+
+  if (currentView === 'real-estate') {
+    return (
+      <RealEstateSection
+        onBackToHome={handleNavigateHome}
+        onOpenAdminLogin={() => {
+          const isAdminLogged = localStorage.getItem('aveiro_admin_logged') === 'true';
+          if (isAdminLogged) {
+            setCurrentView('admin-dashboard');
+          } else {
+            setCurrentView('admin-login');
+          }
+        }}
+        language={lang}
+      />
+    );
+  }
+
+  if (currentView === 'admin-dashboard') {
+    return (
+      <AdminDashboard
+        onClose={() => setCurrentView('real-estate')}
+        onLogout={() => {
+          localStorage.removeItem('aveiro_admin_logged');
+          setCurrentView('real-estate');
+        }}
+        language={lang}
+      />
+    );
+  }
 
   return (
     <div className="min-h-screen bg-[#0a0c10] text-[#ecebe8] font-sans selection:bg-[#c5a880] selection:text-[#0a0c10]">
@@ -88,6 +134,7 @@ export default function App() {
         onSelectApartment={handleSelectApartment}
         onNavigateHome={handleNavigateHome}
         onNavigateSection={handleNavigateSection}
+        onNavigateRealEstate={() => setCurrentView('real-estate')}
       />
 
       {/* Main Content: Either Home Flow or Individual Apartment View */}
@@ -111,12 +158,20 @@ export default function App() {
             {/* Quick Availability Check Widget (#consulta-datas) */}
             <QuickSearchWidget lang={lang} />
 
-             {/* 2. Escolha o seu Alojamento (Aveiro Sunset & Aveiro White 105) */}
+             {/* 2. Escolha o seu Alojamento (Aveiro White 105) */}
             <ApartmentsShowcase
               lang={lang}
               onSelectApartment={handleSelectApartment}
               onOpenPhotoLightbox={handleOpenPhotoLightbox}
             />
+
+            {/* Real Estate CTA Banner */}
+            <div className="max-w-7xl mx-auto px-6">
+              <RealEstateHeroBanner
+                onOpenRealEstate={() => setCurrentView('real-estate')}
+                language={lang}
+              />
+            </div>
 
             {/* 3. Guia Editorial / Descobrir Aveiro */}
             <DiscoverAveiroSection
@@ -130,7 +185,7 @@ export default function App() {
               onSelectApartment={handleSelectApartment}
             />
 
-            {/* 5. A Sua Estadia, Depoimentos do Booking e Banner Final */}
+            {/* 5. A Sua Estadia, Depoimentos e Banner Final */}
             <HomeStayAndTestimonials
               lang={lang}
               onSelectApartment={handleSelectApartment}
@@ -151,8 +206,21 @@ export default function App() {
         onSelectApartment={handleSelectApartment}
         onNavigateHome={handleNavigateHome}
         onNavigateSection={handleNavigateSection}
+        onNavigateRealEstate={() => {
+          setCurrentView('real-estate');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
         onOpenLegal={(type) => setLegalModalType(type)}
       />
+
+      {/* Admin Login Modal if triggered */}
+      {currentView === 'admin-login' && (
+        <AdminLogin
+          onSuccess={() => setCurrentView('admin-dashboard')}
+          onClose={() => setCurrentView('real-estate')}
+          language={lang}
+        />
+      )}
 
       {/* Persistent Floating WhatsApp Button */}
       <WhatsAppButton lang={lang} />

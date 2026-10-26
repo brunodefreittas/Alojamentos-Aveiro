@@ -5,9 +5,10 @@ export const TRANSLATIONS = {
       apartments: 'Alojamentos',
       sunset: 'Aveiro Sunset',
       white105: 'Aveiro White 105',
-      discover: 'Descobrir Aveiro',
+      discover: 'Aveiro',
       location: 'Localização',
       contact: 'Contacto',
+      realEstate: 'Imóveis',
       bookBooking: 'Reservar no Booking',
     },
     hero: {
@@ -166,9 +167,10 @@ export const TRANSLATIONS = {
       apartments: 'Accommodations',
       sunset: 'Aveiro Sunset',
       white105: 'Aveiro White 105',
-      discover: 'Discover Aveiro',
+      discover: 'Aveiro',
       location: 'Location',
       contact: 'Contact',
+      realEstate: 'Properties',
       bookBooking: 'Book on Booking',
     },
     hero: {

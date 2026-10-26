@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, ExternalLink, Globe, Home } from 'lucide-react';
+import { Menu, X, ExternalLink, Globe, Home, Building2 } from 'lucide-react';
 import { Language, ApartmentId } from '../types';
 import { TRANSLATIONS } from '../data/translations';
 
@@ -10,6 +10,7 @@ interface NavbarProps {
   onSelectApartment: (aptId: ApartmentId | null) => void;
   onNavigateHome: () => void;
   onNavigateSection: (sectionId: string) => void;
+  onNavigateRealEstate: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -19,6 +20,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   onSelectApartment,
   onNavigateHome,
   onNavigateSection,
+  onNavigateRealEstate,
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -55,6 +57,12 @@ export const Navbar: React.FC<NavbarProps> = ({
       onNavigateSection(sectionId);
     }
     setIsMobileMenuOpen(false);
+  };
+
+  const handleRealEstateClick = () => {
+    onNavigateRealEstate();
+    setIsMobileMenuOpen(false);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
   return (
@@ -98,7 +106,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 activeApartment === 'aveiro-white-105' ? 'text-[#c5a880] font-medium' : 'text-[#c4beb3]'
               }`}
             >
-              Aveiro White 105
+              {t.apartments}
             </button>
 
             <button
@@ -120,6 +128,14 @@ export const Navbar: React.FC<NavbarProps> = ({
               className="text-[#c4beb3] hover:text-[#c5a880] transition-colors py-1"
             >
               {t.contact}
+            </button>
+
+            <button
+              onClick={handleRealEstateClick}
+              className="text-[#c5a880] hover:text-[#e2c7a0] transition-colors py-1 font-medium flex items-center gap-1.5 bg-[#181d2c]/80 px-3 py-1 rounded-full border border-[#2b354d]"
+            >
+              <Building2 className="w-3.5 h-3.5 text-[#c5a880]" />
+              <span>{t.realEstate}</span>
             </button>
           </nav>
 
@@ -215,7 +231,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   : 'text-[#d6d2c9] hover:bg-[#141824]'
               }`}
             >
-              <div className="font-serif">Aveiro White 105</div>
+              <div className="font-serif">{t.apartments}</div>
               <div className="text-[11px] text-[#9b9588]">Av. Dr. Lourenço Peixinho (Centro)</div>
             </button>
 
@@ -238,6 +254,14 @@ export const Navbar: React.FC<NavbarProps> = ({
               className="w-full text-left px-3 py-2.5 rounded-xl text-sm text-[#d6d2c9] hover:bg-[#141824]"
             >
               {t.contact}
+            </button>
+
+            <button
+              onClick={handleRealEstateClick}
+              className="w-full text-left px-3 py-2.5 rounded-xl text-sm font-medium bg-[#181d2c] text-[#c5a880] flex items-center justify-between border border-[#2b354d]"
+            >
+              <span>{t.realEstate}</span>
+              <Building2 className="w-4 h-4 text-[#c5a880]" />
             </button>
           </div>
 
